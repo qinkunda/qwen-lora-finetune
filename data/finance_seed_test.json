@@ -1,0 +1,52 @@
+[
+  {
+    "instruction": "【意图分类】识别以下企业财务请求的意图和申请编号，仅输出 JSON。",
+    "input": "质保金什么时候可以申请？",
+    "output": "{\"intent\":\"policy_qa\",\"request_id\":null}"
+  },
+  {
+    "instruction": "【意图分类】识别以下企业财务请求的意图和申请编号，仅输出 JSON。",
+    "input": "核对付款单 PR-003 的里程碑金额",
+    "output": "{\"intent\":\"payment_precheck\",\"request_id\":\"PR-003\"}"
+  },
+  {
+    "instruction": "【意图分类】识别以下企业财务请求的意图和申请编号，仅输出 JSON。",
+    "input": "预算单 BR-003 能否通过预检？",
+    "output": "{\"intent\":\"budget_precheck\",\"request_id\":\"BR-003\"}"
+  },
+  {
+    "instruction": "【意图分类】识别以下企业财务请求的意图和申请编号，仅输出 JSON。",
+    "input": "请推荐一家好吃的餐厅",
+    "output": "{\"intent\":\"out_of_scope\",\"request_id\":null}"
+  },
+  {
+    "instruction": "【付款条款抽取】从 input 的合成合同条款中提取付款节点，仅输出 JSON。",
+    "input": "合同HT-2026-201含税总额75000元。预付款20%，到货款60%，质保金20%。到货款申请必须附验收单。",
+    "output": "{\"contract_id\":\"HT-2026-201\",\"total_amount\":\"75000.00\",\"advance_payment_rate\":\"20%\",\"delivery_payment_rate\":\"60%\",\"retention_rate\":\"20%\",\"acceptance_required\":true}"
+  },
+  {
+    "instruction": "【付款条款抽取】从 input 的合成合同条款中提取付款节点，仅输出 JSON。",
+    "input": "合同HT-2026-202含税总额150000元。预付款30%，到货款65%，质保金5%。验收完成后方可申请到货节点款项。",
+    "output": "{\"contract_id\":\"HT-2026-202\",\"total_amount\":\"150000.00\",\"advance_payment_rate\":\"30%\",\"delivery_payment_rate\":\"65%\",\"retention_rate\":\"5%\",\"acceptance_required\":true}"
+  },
+  {
+    "instruction": "【预算预检解释】根据 input 的合成预算数据解释预检结果，金额不得改动。",
+    "input": "{\"project_id\":\"HR-2026\",\"annual_budget\":\"120000.00\",\"committed\":\"20000.00\",\"actual\":\"10000.00\",\"requested_amount\":\"95000.00\"}",
+    "output": "HR-2026可用预算为90000.00元（120000.00-20000.00-10000.00）。本次申请95000.00元，超过可用预算5000.00元，需进入预算调整或专项审批流程。"
+  },
+  {
+    "instruction": "【预算预检解释】根据 input 的合成预算数据解释预检结果，金额不得改动。",
+    "input": "{\"project_id\":\"OPS-2026\",\"annual_budget\":\"180000.00\",\"committed\":\"20000.00\",\"actual\":\"10000.00\",\"requested_amount\":\"120000.00\"}",
+    "output": "OPS-2026可用预算为150000.00元（180000.00-20000.00-10000.00）。本次申请120000.00元，未超过可用预算，预检通过，剩余30000.00元。"
+  },
+  {
+    "instruction": "【对账差异解释】根据 input 的合成对账结果生成简洁中文说明，不得新增差异。",
+    "input": "{\"matched_count\":5,\"findings\":[{\"code\":\"duplicate_bank_record\",\"record_id\":\"BK-201\"}]}",
+    "output": "对账完成：5笔精确匹配，发现1项差异。BK-201存在重复银行流水，需去重后复核。"
+  },
+  {
+    "instruction": "【对账差异解释】根据 input 的合成对账结果生成简洁中文说明，不得新增差异。",
+    "input": "{\"matched_count\":3,\"findings\":[{\"code\":\"amount_mismatch\",\"record_id\":\"BK-202\",\"bank_amount\":\"4800\",\"ledger_amount\":\"4500\"},{\"code\":\"missing_in_bank\",\"record_id\":\"BK-203\"}]}",
+    "output": "对账完成：3笔精确匹配，发现2项差异。BK-202银行金额4800.00元、总账金额4500.00元，差额300.00元，需核对记账凭证。BK-203总账有记录而银行流水缺失，列为银行未达事项。"
+  }
+]

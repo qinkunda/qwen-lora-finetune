@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+saves/
+sft_raw.json
+train_all.json
+/eval_compare_v2.json
+/eval_rag_sim.json
+/eval_e2e.json
+.pytest_cache/

@@ -1,14 +1,16 @@
-import json, glob, torch
+import json, glob, os, torch
+from pathlib import Path
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from peft import PeftModel
 from dashscope import TextEmbedding
 import chromadb
 
-MODEL = "/mnt/workspace/.cache/modelscope/models/Qwen--Qwen2.5-1.5B-Instruct/snapshots/master"
-ADAPTER = "saves/qwen1.5b-finance-lora-v2"
+BASE = Path(__file__).resolve().parent
+MODEL = os.getenv("BASE_MODEL_PATH", "Qwen/Qwen2.5-1.5B-Instruct")
+ADAPTER = os.getenv("LORA_ADAPTER_PATH", str(BASE / "saves/qwen1.5b-finance-lora-v2"))
 
 chunks = []
-for f in sorted(glob.glob("knowledge/*.txt") + glob.glob("knowledge/*.md")):
+for f in sorted(glob.glob(str(BASE / "knowledge/*.txt")) + glob.glob(str(BASE / "knowledge/*.md"))):
     buf = ""
     for line in open(f, encoding="utf-8").read().split("\n"):
         if len(buf) + len(line) > 500 and buf:
@@ -26,7 +28,7 @@ col = chromadb.Client().create_collection("kb_finance")
 col.add(ids=[str(i) for i in range(len(chunks))], embeddings=embed(chunks), documents=chunks)
 print("向量索引完成", flush=True)
 
-tests = json.load(open("test.json"))
+tests = json.load(open(BASE / "data/test.json", encoding="utf-8"))
 tok = AutoTokenizer.from_pretrained(MODEL)
 
 def gen(model, q):
@@ -53,5 +55,7 @@ for i, t in enumerate(tests):
     print(f"ft {i+1}/10", flush=True)
     results[i]["ft_e2e"] = gen(ft, t["instruction"])
 
-json.dump(results, open("eval_e2e.json", "w"), ensure_ascii=False, indent=2)
-print("=== 完成 ===", flush=True)
+output_path = BASE / "results/eval_e2e.json"
+output_path.parent.mkdir(parents=True, exist_ok=True)
+json.dump(results, open(output_path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+print(f"=== 完成,结果在 {output_path} ===", flush=True)

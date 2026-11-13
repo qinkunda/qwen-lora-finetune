@@ -1,0 +1,17 @@
+{
+  "dataset_status": "seed_only_not_trained",
+  "data_source": "synthetic_demo",
+  "description": "企业财务多任务种子数据；未纳入原 data/train.json，未产生新训练或评测指标。",
+  "train_records": 32,
+  "test_records": 10,
+  "task_counts": {
+    "【付款条款抽取】": 8,
+    "【对账差异解释】": 8,
+    "【意图分类】": 16,
+    "【预算预检解释】": 10
+  },
+  "files": {
+    "finance_seed_train.json": "20060769e6703930e6ddb9a9b778ff266b59297365ef2be01ee16ebcd200dd92",
+    "finance_seed_test.json": "dbf5dbc579a3a43750d90c1e4de6748c5ddefa13981eab3a653750299127ab74"
+  }
+}

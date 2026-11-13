@@ -1,0 +1,162 @@
+[
+  {
+    "instruction": "【意图分类】识别以下企业财务请求的意图和申请编号，仅输出 JSON。",
+    "input": "预付款最多可以付多少比例？",
+    "output": "{\"intent\":\"policy_qa\",\"request_id\":null}"
+  },
+  {
+    "instruction": "【意图分类】识别以下企业财务请求的意图和申请编号，仅输出 JSON。",
+    "input": "电子发票需要上传什么文件？",
+    "output": "{\"intent\":\"policy_qa\",\"request_id\":null}"
+  },
+  {
+    "instruction": "【意图分类】识别以下企业财务请求的意图和申请编号，仅输出 JSON。",
+    "input": "深圳普通员工住宿上限是多少？",
+    "output": "{\"intent\":\"policy_qa\",\"request_id\":null}"
+  },
+  {
+    "instruction": "【意图分类】识别以下企业财务请求的意图和申请编号，仅输出 JSON。",
+    "input": "请预检付款申请 PR-001",
+    "output": "{\"intent\":\"payment_precheck\",\"request_id\":\"PR-001\"}"
+  },
+  {
+    "instruction": "【意图分类】识别以下企业财务请求的意图和申请编号，仅输出 JSON。",
+    "input": "付款申请 PR-002 为什么需要人工复核？",
+    "output": "{\"intent\":\"payment_precheck\",\"request_id\":\"PR-002\"}"
+  },
+  {
+    "instruction": "【意图分类】识别以下企业财务请求的意图和申请编号，仅输出 JSON。",
+    "input": "我想办理一笔付款预检",
+    "output": "{\"intent\":\"payment_precheck\",\"request_id\":null}"
+  },
+  {
+    "instruction": "【意图分类】识别以下企业财务请求的意图和申请编号，仅输出 JSON。",
+    "input": "检查预算申请 BR-001",
+    "output": "{\"intent\":\"budget_precheck\",\"request_id\":\"BR-001\"}"
+  },
+  {
+    "instruction": "【意图分类】识别以下企业财务请求的意图和申请编号，仅输出 JSON。",
+    "input": "BR-002 是否超出可用预算？",
+    "output": "{\"intent\":\"budget_precheck\",\"request_id\":\"BR-002\"}"
+  },
+  {
+    "instruction": "【意图分类】识别以下企业财务请求的意图和申请编号，仅输出 JSON。",
+    "input": "帮我做一下预算预检",
+    "output": "{\"intent\":\"budget_precheck\",\"request_id\":null}"
+  },
+  {
+    "instruction": "【意图分类】识别以下企业财务请求的意图和申请编号，仅输出 JSON。",
+    "input": "跑一下银行与总账对账并列出差异",
+    "output": "{\"intent\":\"reconciliation\",\"request_id\":null}"
+  },
+  {
+    "instruction": "【意图分类】识别以下企业财务请求的意图和申请编号，仅输出 JSON。",
+    "input": "这次对账有哪些金额不一致？",
+    "output": "{\"intent\":\"reconciliation\",\"request_id\":null}"
+  },
+  {
+    "instruction": "【意图分类】识别以下企业财务请求的意图和申请编号，仅输出 JSON。",
+    "input": "今天适合去哪跑步？",
+    "output": "{\"intent\":\"out_of_scope\",\"request_id\":null}"
+  },
+  {
+    "instruction": "【付款条款抽取】从 input 的合成合同条款中提取付款节点，仅输出 JSON。",
+    "input": "合同HT-2026-101含税总额80000元。预付款20%，到货款70%，质保金10%。到货款支付前必须取得验收单。",
+    "output": "{\"contract_id\":\"HT-2026-101\",\"total_amount\":\"80000.00\",\"advance_payment_rate\":\"20%\",\"delivery_payment_rate\":\"70%\",\"retention_rate\":\"10%\",\"acceptance_required\":true}"
+  },
+  {
+    "instruction": "【付款条款抽取】从 input 的合成合同条款中提取付款节点，仅输出 JSON。",
+    "input": "合同HT-2026-102含税总额120000元。预付款30%，到货款60%，质保金10%。预付款凭合同与发票申请，到货款另附验收材料。",
+    "output": "{\"contract_id\":\"HT-2026-102\",\"total_amount\":\"120000.00\",\"advance_payment_rate\":\"30%\",\"delivery_payment_rate\":\"60%\",\"retention_rate\":\"10%\",\"acceptance_required\":true}"
+  },
+  {
+    "instruction": "【付款条款抽取】从 input 的合成合同条款中提取付款节点，仅输出 JSON。",
+    "input": "合同HT-2026-103含税总额50000元。预付款10%，到货款80%，质保金10%。到货验收完成后方可申请到货款。",
+    "output": "{\"contract_id\":\"HT-2026-103\",\"total_amount\":\"50000.00\",\"advance_payment_rate\":\"10%\",\"delivery_payment_rate\":\"80%\",\"retention_rate\":\"10%\",\"acceptance_required\":true}"
+  },
+  {
+    "instruction": "【付款条款抽取】从 input 的合成合同条款中提取付款节点，仅输出 JSON。",
+    "input": "合同HT-2026-104含税总额200000元。预付款25%，到货款65%，质保金10%。验收单为到货款必要附件。",
+    "output": "{\"contract_id\":\"HT-2026-104\",\"total_amount\":\"200000.00\",\"advance_payment_rate\":\"25%\",\"delivery_payment_rate\":\"65%\",\"retention_rate\":\"10%\",\"acceptance_required\":true}"
+  },
+  {
+    "instruction": "【付款条款抽取】从 input 的合成合同条款中提取付款节点，仅输出 JSON。",
+    "input": "合同HT-2026-105含税总额60000元。预付款30%，到货款50%，质保金20%。到货款审核时核验验收单与发票。",
+    "output": "{\"contract_id\":\"HT-2026-105\",\"total_amount\":\"60000.00\",\"advance_payment_rate\":\"30%\",\"delivery_payment_rate\":\"50%\",\"retention_rate\":\"20%\",\"acceptance_required\":true}"
+  },
+  {
+    "instruction": "【付款条款抽取】从 input 的合成合同条款中提取付款节点，仅输出 JSON。",
+    "input": "合同HT-2026-106含税总额90000元。预付款15%，到货款75%，质保金10%。未提供验收单不得进入到货款审批。",
+    "output": "{\"contract_id\":\"HT-2026-106\",\"total_amount\":\"90000.00\",\"advance_payment_rate\":\"15%\",\"delivery_payment_rate\":\"75%\",\"retention_rate\":\"10%\",\"acceptance_required\":true}"
+  },
+  {
+    "instruction": "【预算预检解释】根据 input 的合成预算数据解释预检结果，金额不得改动。",
+    "input": "{\"project_id\":\"LOG-2026\",\"annual_budget\":\"200000.00\",\"committed\":\"80000.00\",\"actual\":\"50000.00\",\"requested_amount\":\"50000.00\"}",
+    "output": "LOG-2026可用预算为70000.00元（200000.00-80000.00-50000.00）。本次申请50000.00元，未超过可用预算，预检通过，剩余20000.00元。"
+  },
+  {
+    "instruction": "【预算预检解释】根据 input 的合成预算数据解释预检结果，金额不得改动。",
+    "input": "{\"project_id\":\"LOG-2026-A\",\"annual_budget\":\"200000.00\",\"committed\":\"80000.00\",\"actual\":\"50000.00\",\"requested_amount\":\"90000.00\"}",
+    "output": "LOG-2026-A可用预算为70000.00元（200000.00-80000.00-50000.00）。本次申请90000.00元，超过可用预算20000.00元，需进入预算调整或专项审批流程。"
+  },
+  {
+    "instruction": "【预算预检解释】根据 input 的合成预算数据解释预检结果，金额不得改动。",
+    "input": "{\"project_id\":\"IT-2026\",\"annual_budget\":\"150000.00\",\"committed\":\"30000.00\",\"actual\":\"20000.00\",\"requested_amount\":\"40000.00\"}",
+    "output": "IT-2026可用预算为100000.00元（150000.00-30000.00-20000.00）。本次申请40000.00元，未超过可用预算，预检通过，剩余60000.00元。"
+  },
+  {
+    "instruction": "【预算预检解释】根据 input 的合成预算数据解释预检结果，金额不得改动。",
+    "input": "{\"project_id\":\"IT-2026-A\",\"annual_budget\":\"150000.00\",\"committed\":\"30000.00\",\"actual\":\"20000.00\",\"requested_amount\":\"120000.00\"}",
+    "output": "IT-2026-A可用预算为100000.00元（150000.00-30000.00-20000.00）。本次申请120000.00元，超过可用预算20000.00元，需进入预算调整或专项审批流程。"
+  },
+  {
+    "instruction": "【预算预检解释】根据 input 的合成预算数据解释预检结果，金额不得改动。",
+    "input": "{\"project_id\":\"MKT-2026\",\"annual_budget\":\"100000.00\",\"committed\":\"10000.00\",\"actual\":\"20000.00\",\"requested_amount\":\"70000.00\"}",
+    "output": "MKT-2026可用预算为70000.00元（100000.00-10000.00-20000.00）。本次申请70000.00元，未超过可用预算，预检通过，剩余0.00元。"
+  },
+  {
+    "instruction": "【预算预检解释】根据 input 的合成预算数据解释预检结果，金额不得改动。",
+    "input": "{\"project_id\":\"MKT-2026-A\",\"annual_budget\":\"100000.00\",\"committed\":\"10000.00\",\"actual\":\"20000.00\",\"requested_amount\":\"80000.00\"}",
+    "output": "MKT-2026-A可用预算为70000.00元（100000.00-10000.00-20000.00）。本次申请80000.00元，超过可用预算10000.00元，需进入预算调整或专项审批流程。"
+  },
+  {
+    "instruction": "【预算预检解释】根据 input 的合成预算数据解释预检结果，金额不得改动。",
+    "input": "{\"project_id\":\"RND-2026\",\"annual_budget\":\"300000.00\",\"committed\":\"50000.00\",\"actual\":\"50000.00\",\"requested_amount\":\"100000.00\"}",
+    "output": "RND-2026可用预算为200000.00元（300000.00-50000.00-50000.00）。本次申请100000.00元，未超过可用预算，预检通过，剩余100000.00元。"
+  },
+  {
+    "instruction": "【预算预检解释】根据 input 的合成预算数据解释预检结果，金额不得改动。",
+    "input": "{\"project_id\":\"RND-2026-A\",\"annual_budget\":\"300000.00\",\"committed\":\"50000.00\",\"actual\":\"50000.00\",\"requested_amount\":\"250000.00\"}",
+    "output": "RND-2026-A可用预算为200000.00元（300000.00-50000.00-50000.00）。本次申请250000.00元，超过可用预算50000.00元，需进入预算调整或专项审批流程。"
+  },
+  {
+    "instruction": "【对账差异解释】根据 input 的合成对账结果生成简洁中文说明，不得新增差异。",
+    "input": "{\"matched_count\":12,\"findings\":[]}",
+    "output": "对账完成：12笔精确匹配，发现0项差异。无需生成差异工单。"
+  },
+  {
+    "instruction": "【对账差异解释】根据 input 的合成对账结果生成简洁中文说明，不得新增差异。",
+    "input": "{\"matched_count\":8,\"findings\":[{\"code\":\"amount_mismatch\",\"record_id\":\"BK-101\",\"bank_amount\":\"1000\",\"ledger_amount\":\"900\"}]}",
+    "output": "对账完成：8笔精确匹配，发现1项差异。BK-101银行金额1000.00元、总账金额900.00元，差额100.00元，需核对记账凭证。"
+  },
+  {
+    "instruction": "【对账差异解释】根据 input 的合成对账结果生成简洁中文说明，不得新增差异。",
+    "input": "{\"matched_count\":6,\"findings\":[{\"code\":\"missing_in_ledger\",\"record_id\":\"BK-102\"}]}",
+    "output": "对账完成：6笔精确匹配，发现1项差异。BK-102银行有记录而总账缺失，需检查是否漏记凭证。"
+  },
+  {
+    "instruction": "【对账差异解释】根据 input 的合成对账结果生成简洁中文说明，不得新增差异。",
+    "input": "{\"matched_count\":9,\"findings\":[{\"code\":\"missing_in_bank\",\"record_id\":\"BK-103\"}]}",
+    "output": "对账完成：9笔精确匹配，发现1项差异。BK-103总账有记录而银行流水缺失，列为银行未达事项。"
+  },
+  {
+    "instruction": "【对账差异解释】根据 input 的合成对账结果生成简洁中文说明，不得新增差异。",
+    "input": "{\"matched_count\":7,\"findings\":[{\"code\":\"duplicate_bank_record\",\"record_id\":\"BK-104\"}]}",
+    "output": "对账完成：7笔精确匹配，发现1项差异。BK-104存在重复银行流水，需去重后复核。"
+  },
+  {
+    "instruction": "【对账差异解释】根据 input 的合成对账结果生成简洁中文说明，不得新增差异。",
+    "input": "{\"matched_count\":4,\"findings\":[{\"code\":\"amount_mismatch\",\"record_id\":\"BK-105\",\"bank_amount\":\"2600\",\"ledger_amount\":\"2500\"},{\"code\":\"missing_in_ledger\",\"record_id\":\"BK-106\"}]}",
+    "output": "对账完成：4笔精确匹配，发现2项差异。BK-105银行金额2600.00元、总账金额2500.00元，差额100.00元，需核对记账凭证。BK-106银行有记录而总账缺失，需检查是否漏记凭证。"
+  }
+]
